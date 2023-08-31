@@ -11,8 +11,9 @@ export default function Calculator() {
     other: {},
   });
 
+  // this function isn't working when passed down
   function handleChange(event) {
-    const { name, value } = event.target;
+    const { name, value, key } = event.target;
     updateIngredients((oldIngredients) => ({
       ...oldIngredients,
       [name]: value,
@@ -28,9 +29,15 @@ export default function Calculator() {
     }));
   }
 
+  console.log(ingredients);
+
   const malts = ingredients.malt.map((malts) => {
     return (
-      <Malt key="" ingredients={ingredients} handleChange={handleChange} />
+      <Malt
+        key={Math.random()}
+        ingredients={ingredients}
+        handleChange={handleChange}
+      />
     );
   });
 
